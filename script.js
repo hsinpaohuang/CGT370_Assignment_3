@@ -152,10 +152,6 @@ function ready(error, us) {
 		.attr("data-legend",function(d) { return d.properties.NAME; })
         .attr("fill", function (d){
 		// Pull data for this county
-		console.log(d)
-		console.log(data)
-		console.log(data.get(d.properties.GEOID))
-		//lol;
 		d.est = data.get(d.properties.GEOID);
 		// Set the color
 		return colorScale(d.est);
@@ -171,6 +167,7 @@ function ready(error, us) {
 
 function clicked(d)
 {
+	console.log("clicked on: " + d.properties.NAME + ", estimated number of people in poverty: " + d.est);
 	d3.select('div.info>p')
 		.text(d.properties.NAME + ': ' + d.est)
 }
